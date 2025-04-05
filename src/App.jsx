@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import "./App.css";
 import FontGroups from "./page/FontGroups";
 import FontUploader from "./page/FontUploader";
-import { useState } from 'react';
+
 
 function App() {
-  const [fonts, setFonts] = useState([]);
+
 
   return (
     <Router>
@@ -17,8 +17,8 @@ function App() {
         </div>
       </nav>
       <Routes>
-        <Route path="/" element={<FontUploader fonts={fonts} setFonts={setFonts} />} />
-        <Route path="/create" element={<FontGroups fonts={fonts} />} />
+        <Route path="/" element={<FontUploader/>} />
+        <Route path="/create" element={<FontGroups />} />
       </Routes>
     </Router>
   );
