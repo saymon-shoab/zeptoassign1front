@@ -3,8 +3,12 @@
   "manifest_version": 3,
   "web_accessible_resources": [
     {
-      "resources": ["fonts/*.ttf"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "fonts/*.ttf"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ],
   "private": true,
@@ -17,7 +21,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bootstrap": "^5.3.5",
     "react": "^19.0.0",
+    "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.0"
   },
