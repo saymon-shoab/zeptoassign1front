@@ -1,24 +1,41 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { Container } from "react-bootstrap";
 import "./App.css";
-import FontGroups from "./page/FontGroups";
-import FontList from "./page/FontList";
-import Navbars from './components/Navbars';
-import CreateFontGroup from "./page/CreateFontGroup";
-
+import FontUploader from "./components/FontUploader";
+import FontList from "./components/FontList";
+import CreateFontGroup from "./components/CreateFontGroup";
+import FontGroupList from "./components/FontGroupList";
 
 function App() {
+  const [fontRefreshTrigger, setFontRefreshTrigger] = useState(0);
+  const [groupRefreshTrigger, setGroupRefreshTrigger] = useState(0);
 
+  const handleFontUploaded = () => {
+    setFontRefreshTrigger(prev => prev + 1);
+  };
 
+  const handleGroupCreated = () => {
+    setGroupRefreshTrigger(prev => prev + 1);
+  };
   return (
-   
-<BrowserRouter>
-  <Navbars /> 
-  <Routes>
-    <Route path="/" element={<FontList />} />
-    <Route path="/fontgroup" element={<FontGroups />} />
-    <Route path="/create-font-group" element={<CreateFontGroup />} />
-  </Routes>
-</BrowserRouter>
+    <div className="min-vh-100 bg-light">
+      <Container className="py-4">
+        <div className="text-center mb-5">
+          <h1 className="display-4 fw-bold text-primary">Font Group System</h1>
+          <p className="lead text-muted">
+            Upload fonts, create groups, and manage your typography collection
+          </p>
+        </div>
+        
+        <FontUploader onFontUploaded={handleFontUploaded} />
+        
+        <FontList refreshTrigger={fontRefreshTrigger} />
+        
+        <CreateFontGroup onGroupCreated={handleGroupCreated} />
+        
+        <FontGroupList refreshTrigger={groupRefreshTrigger} />
+      </Container>
+    </div>
   );
 }
 
